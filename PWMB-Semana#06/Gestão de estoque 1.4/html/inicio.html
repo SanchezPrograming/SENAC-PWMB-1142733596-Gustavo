@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre a GSPH Calçados</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            background-color: #f8f8f8;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            font-family: 'Tahoma', sans-serif;
+            font-size: 40px;
+            color: #c9791d;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 20px;
+            line-height: 1.6;
+            color: #333;
+            max-width: 900px; 
+            margin: 0 auto;
+            padding: 20px; 
+            font-family: 'Verdana', sans-serif; 
+            text-align: center;
+        }
+        .produto {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .calcado {
+            flex: 1;
+            margin: 10px;
+            border: 2px solid #2e92e4;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .calcado:hover {
+            transform: scale(1.05);
+        }
+
+        .calcado img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Sobre a GSPH Calçados</h1>
+    <p>
+        A GSPH Calçados é líder de mercado quando o assunto é moda e estilo! Oferecemos uma ampla variedade de calçados de alta qualidade para atender a todas as suas necessidades de moda.
+    </p>
+    <div class="produto">
+        <div class="calcado">
+            <img src="img/calcado1.jpg" alt="Calçado 1">
+        </div>
+        <div class="calcado">
+            <img src="img/calcado2.jpg" alt="Calçado 2">
+        </div>
+        <div class="calcado">
+            <img src="img/calcado3.jpg" alt="Calçado 3">
+        </div>
+    </div>
+</body>
+</html>

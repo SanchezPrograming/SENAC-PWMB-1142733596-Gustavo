@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/login.css">
+    <title>Login e Registro</title>
+</head>
+<body>
+    <form>
+        <h3>Acesso</h3>
+        <input type="text" placeholder="Login" id="login">
+        <input type="password" placeholder="Senha" id="senha">
+        <input type="submit" value="Entrar" onclick="acessar(); return false">
+
+        <div id="registro-section">
+            <h3>Registro</h3>
+            <input type="text" placeholder="Novo Login" id="new-login">
+            <input type="password" placeholder="Nova Senha" id="new-senha">
+            <input type="submit" value="Registrar" onclick="registrar(); return false">
+        </div>
+    </form>
+
+    <script>
+        function acessar() {
+            var login = document.getElementById('login').value;
+            var senha = document.getElementById('senha').value;
+
+            var registros = JSON.parse(localStorage.getItem('registros')) || [];
+
+            var registroCorrespondente = registros.find(function(registro) {
+                return registro.login === login && registro.senha === senha;
+            });
+
+            if (registroCorrespondente || (login === '1234' && senha === '1234')) {
+                alert('Sucesso');
+                window.location.href = "../index.html";
+            } else {
+                alert('Usuário ou senha incorretos');
+            }
+            
+        }
+
+        function registrar() {
+            var novoLogin = document.getElementById('new-login').value;
+            var novaSenha = document.getElementById('new-senha').value;
+
+            var registros = JSON.parse(localStorage.getItem('registros')) || [];
+            registros.push({ login: novoLogin, senha: novaSenha });
+            localStorage.setItem('registros', JSON.stringify(registros));
+
+            alert('Registro bem-sucedido! Faça o login agora.');
+            document.getElementById('login').value = novoLogin;
+            document.getElementById('senha').value = novaSenha;
+            document.getElementById('new-login').value = '';
+            document.getElementById('new-senha').value = '';
+        }
+    </script>
+</body>
+</html>
