@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Produtos</title>
+    <link rel="stylesheet" href="../css/cadpro.css">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <h2>Menu</h2>
+            <ul>
+                <li><a href="cadpro.html">Cadastrar Produtos</a></li>
+                <li><a href="lista.html">Listar Produtos</a></li>
+                <li><a href="#excluir">Excluir Produtos</a></li>
+                <li><a href="#alterar">Alterar Produtos</a></li>
+                <li><a href="#estoque">Controle de Estoque</a></li>
+            </ul>
+        </div>
+        
+        <div class="content">
+            <form method="post" action="#">
+                <h1>Cadastro de Produtos</h1>
+                <p>
+                    <label for="codigo">Código:<span class="required">*</span></label>
+                    <input type="number" name="codigo" id="codigo" required>
+                </p>
+                <p>
+                    <label for="nome">Nome do produto:<span class="required">*</span></label>
+                    <input type="text" name="nome" id="nome" size="50" maxlength="50" required>
+                </p>
+                <p>
+                    <label for="marca">Marca:</label>
+                    <input type="text" name="marca" id="marca">
+                </p>
+                <p>
+                    <label for="preco">Preço:<span class="required">*</span></label>
+                    <input type="number" name="preco" id="preco" step="0.1" required>
+                </p>
+                <p>
+                    <input type="submit" value="Salvar">
+                </p>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
