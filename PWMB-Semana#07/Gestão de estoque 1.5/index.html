@@ -29,9 +29,12 @@
         <p>&copy; 2023 Gustavo Sanchez / Pedro Henrique</p>
     </footer>
     <script>
-        if (!localStorage.getItem("redirecionado")) {
+        var redirecionado = localStorage.getItem("redirecionado");
+        if (!redirecionado) {
             localStorage.setItem("redirecionado", "true");
             window.location.href = "html/login.html";
+        } else if (redirecionado === "true") {
+            localStorage.removeItem("redirecionado");
         }
     </script>
 </body>
