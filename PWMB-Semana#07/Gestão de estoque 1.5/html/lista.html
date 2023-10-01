@@ -11,32 +11,28 @@
     <table>
         <thead>
             <tr>
-                <th>Código</th>
-                <th>Nome</th>
-                <th>Marca</th>
-                <th>Preço</th>
+                <th>Nome do Produto</th>
+                <th>Preço do Produto</th>
+                <th>Quantidade</th>
             </tr>
         </thead>
-        <tbody id="tabelaProdutos">
-            <tr>
-                <td>1</td>
-                <td>Tn Plus 3</td>
-                <td>Nike</td>
-                <td>1000.00</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>old skool</td>
-                <td>Vans</td>
-                <td>250.00</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>Sorayama</td>
-                <td>Mizuno</td>
-                <td>2000.00</td>
-            </tr>
-        </tbody>
+        <tbody id="productList"></tbody>
     </table>
+    <script>
+        window.onload = function() {
+            const productList = document.getElementById('productList');
+            const products = JSON.parse(localStorage.getItem('products')) || [];
+
+            products.forEach(function(product) {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td>${product.name}</td>
+                    <td>R$ ${product.price.toFixed(2)}</td>
+                    <td>${product.quantity}</td>
+                `;
+                productList.appendChild(tr);
+            });
+        }
+    </script>
 </body>
 </html>

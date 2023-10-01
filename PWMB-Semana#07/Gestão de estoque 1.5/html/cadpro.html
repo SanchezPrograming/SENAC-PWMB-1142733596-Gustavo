@@ -20,29 +20,48 @@
         </div>
         
         <div class="content">
-            <form method="post" action="#">
-                <h1>Cadastro de Produtos</h1>
-                <p>
-                    <label for="codigo">Código:<span class="required">*</span></label>
-                    <input type="number" name="codigo" id="codigo" required>
-                </p>
-                <p>
-                    <label for="nome">Nome do produto:<span class="required">*</span></label>
-                    <input type="text" name="nome" id="nome" size="50" maxlength="50" required>
-                </p>
-                <p>
-                    <label for="marca">Marca:</label>
-                    <input type="text" name="marca" id="marca">
-                </p>
-                <p>
-                    <label for="preco">Preço:<span class="required">*</span></label>
-                    <input type="number" name="preco" id="preco" step="0.1" required>
-                </p>
-                <p>
-                    <input type="submit" value="Salvar">
-                </p>
+            <h1>Cadastro de Produtos</h1>
+            <form id="productForm">
+                <label for="productName">Nome do Produto:</label>
+                <input type="text" id="productName" required>
+                <br>
+                <label for="productPrice">Preço do Produto:</label>
+                <input type="number" id="productPrice" required>
+                <br>
+                <label for="productQuantity">Quantidade:</label>
+                <input type="number" id="productQuantity" required>
+                <br>
+                <input type="button" value="Adicionar Produto" onclick="addProduct()">
             </form>
         </div>
+        <script>
+            function addProduct() {
+                const productName = document.getElementById('productName').value;
+                const productPrice = parseFloat(document.getElementById('productPrice').value);
+                const productQuantity = parseInt(document.getElementById('productQuantity').value);
+
+                if (!productName || isNaN(productPrice) || isNaN(productQuantity)) {
+                    alert('Por favor, preencha todos os campos corretamente.');
+                    return;
+                }
+
+                const product = {
+                    name: productName,
+                    price: productPrice,
+                    quantity: productQuantity
+                };
+
+                let products = JSON.parse(localStorage.getItem('products')) || [];
+                products.push(product);
+                localStorage.setItem('products', JSON.stringify(products));
+
+                document.getElementById('productName').value = '';
+                document.getElementById('productPrice').value = '';
+                document.getElementById('productQuantity').value = '';
+
+                alert('Produto cadastrado com sucesso!');
+            }
+        </script>
     </div>
 </body>
 </html>
