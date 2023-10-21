@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Produtos</title>
+    <link rel="stylesheet" href="../css/cadpro.css">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <h2>Menu</h2>
+            <ul>
+                <li><a href="cadpro.html">Cadastrar Produtos</a></li>
+                <li><a href="lista.html">Listar Produtos</a></li>
+                <li><a href="#excluir">Excluir Produtos</a></li>
+                <li><a href="#alterar">Alterar Produtos</a></li>
+                <li><a href="#estoque">Controle de Estoque</a></li>
+            </ul>
+        </div>
+        
+        <div class="content">
+            <h1>Cadastro de Produtos</h1>
+            <form id="productForm">
+                <label for="productName">Nome do Produto:</label>
+                <input type="text" id="productName" required>
+                <br>
+                <label for="productPrice">Preço do Produto:</label>
+                <input type="number" id="productPrice" required>
+                <br>
+                <label for="productQuantity">Quantidade:</label>
+                <input type="number" id="productQuantity" required>
+                <br>
+                <input type="button" value="Adicionar Produto" onclick="addProduct()">
+            </form>
+        </div>
+        <script>
+            function addProduct() {
+                const productName = document.getElementById('productName').value;
+                const productPrice = parseFloat(document.getElementById('productPrice').value);
+                const productQuantity = parseInt(document.getElementById('productQuantity').value);
+
+                if (!productName || isNaN(productPrice) || isNaN(productQuantity)) {
+                    alert('Por favor, preencha todos os campos corretamente.');
+                    return;
+                }
+
+                const product = {
+                    name: productName,
+                    price: productPrice,
+                    quantity: productQuantity
+                };
+
+                let products = JSON.parse(localStorage.getItem('products')) || [];
+                products.push(product);
+                localStorage.setItem('products', JSON.stringify(products));
+
+                document.getElementById('productName').value = '';
+                document.getElementById('productPrice').value = '';
+                document.getElementById('productQuantity').value = '';
+
+                alert('Produto cadastrado com sucesso!');
+            }
+        </script>
+    </div>
+</body>
+</html>
