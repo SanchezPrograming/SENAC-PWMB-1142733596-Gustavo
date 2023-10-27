@@ -1,0 +1,41 @@
+<!--
+    Senac TADS 
+    Programação Web / Turma B
+    Prof. Carlos Henrique Veríssimo Pereira
+    Alunos. Gustavo de Medeiros Sanchez e Pedro Henrique Pinheiro de Oliveira 
+-->
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <title>Página Inicial</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+    <header>
+        <h1><a href="index.html"> GSPH CALÇADOS </a></h1>
+    </header>
+    <nav>
+        <a href="html/cadpro.html" target="centro">Produtos</a>
+        <a href="html/pedidos.html" target="centro">Pedidos</a>
+        <a href="html/forn.html" target="centro">Fornecedores</a>
+    </nav>
+    <main>
+        <iframe src="html/inicio.html" name="centro"></iframe>
+    </main>
+    <footer>
+        <p>&copy; 2023 Gustavo Sanchez / Pedro Henrique</p> 
+    </footer>
+    <script>
+        var redirecionado = localStorage.getItem("redirecionado");
+        if (!redirecionado) {
+            localStorage.setItem("redirecionado", "true");
+            window.location.href = "html/login.html";
+        } else if (redirecionado === "true") {
+            localStorage.removeItem("redirecionado");
+        }
+    </script>
+</body>
+</html>
