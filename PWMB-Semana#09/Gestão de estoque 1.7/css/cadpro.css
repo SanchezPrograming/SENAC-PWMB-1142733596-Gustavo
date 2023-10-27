@@ -12,10 +12,11 @@ body {
 .container {
     display: flex;
     background-color: white;
-    border-radius: 10px;
+    border-radius: 18px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     max-width: 800px;
     width: 100%;
+    border: solid 2px black;
 }
 
 .sidebar {
@@ -62,7 +63,7 @@ label {
 }
 
 input {
-    width: 100%;
+    width: 95%;
     padding: 10px;
     margin-top: 5px;
     border: 1px solid #ccc;
