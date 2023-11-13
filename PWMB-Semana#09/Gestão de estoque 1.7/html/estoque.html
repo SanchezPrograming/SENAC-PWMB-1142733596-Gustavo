@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de Produtos</title>
-    <link rel="stylesheet" href="../css/lista.css">
+    <link rel="stylesheet" href="../css/estoque.css">
+    <title>Controle de Estoque</title>
+
 </head>
 <body>
     <div class="container">
@@ -20,35 +21,41 @@
         </div>
         
         <div class="content">
-            <h1>Lista de Produtos</h1>
-            <table id="productTable">
+            <h1>Controle de Estoque</h1>
+            <table id="stockTable">
                 <thead>
                     <tr>
                         <th>Nome do Produto</th>
-                        <th>Preço do Produto</th>
-                        <th>Quantidade</th>
+                        <th>Quantidade em Estoque</th>
                     </tr>
                 </thead>
-                <tbody id="productList"></tbody>
+                <tbody id="stockList">
+                    <!-- Lista de estoque será exibida aqui -->
+                </tbody>
             </table>
         </div>
         <script>
-            window.onload = function() {
-                const productList = document.getElementById('productList');
+            function displayStockList() {
                 const products = JSON.parse(localStorage.getItem('products')) || [];
+                const stockList = document.getElementById('stockList');
 
-                products.forEach(function(product) {
-                    const tr = document.createElement('tr');
-                    tr.innerHTML = `
+                // Limpa a lista antes de atualizar
+                stockList.innerHTML = '';
+
+                // Adiciona cada produto ao controle de estoque
+                products.forEach(product => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
                         <td>${product.name}</td>
-                        <td>R$ ${product.price.toFixed(2)}</td>
                         <td>${product.quantity}</td>
                     `;
-                    productList.appendChild(tr);
+                    stockList.appendChild(row);
                 });
             }
+
+            // Exibe a lista de estoque ao carregar a página
+            displayStockList();
         </script>
     </div>
 </body>
 </html>
-
