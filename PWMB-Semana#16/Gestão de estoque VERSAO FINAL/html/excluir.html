@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/excluir.css">
+    <title>Excluir Produtos</title>
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <h2>Menu</h2>
+            <ul>
+                <li><a href="cadpro.html">Cadastrar Produtos</a></li>
+                <li><a href="lista.html">Listar Produtos</a></li>
+                <li><a href="excluir.html">Excluir Produtos</a></li>
+                <li><a href="alterar.html">Alterar Produtos</a></li>
+                <li><a href="estoque.html">Controle de Estoque</a></li>
+            </ul>
+        </div>
+        
+        <div class="content">
+            <h1>Excluir Produtos</h1>
+            <table id="productTable">
+                <thead>
+                    <tr>
+                        <th>Nome do Produto</th>
+                        <th>Preço</th>
+                        <th>Quantidade</th>
+                        <th>Ação</th>
+                    </tr>
+                </thead>
+                <tbody id="productList">
+                </tbody>
+            </table>
+        </div>
+        <script>
+            function displayProductList() {
+                const products = JSON.parse(localStorage.getItem('products')) || [];
+                const productList = document.getElementById('productList');
+                productList.innerHTML = '';
+                products.forEach((product, index) => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${product.name}</td>
+                        <td>R$ ${product.price.toFixed(2)}</td>
+                        <td>${product.quantity}</td>
+                        <td><button onclick="deleteProduct(${index})">Excluir</button></td>
+                    `;
+                    productList.appendChild(row);
+                });
+            }
+
+            function deleteProduct(index) {
+                const products = JSON.parse(localStorage.getItem('products')) || [];
+                products.splice(index, 1);
+                localStorage.setItem('products', JSON.stringify(products));
+                displayProductList();
+                alert('Produto excluído com sucesso!');
+            }
+            displayProductList();
+        </script>
+    </div>
+</body>
+</html>

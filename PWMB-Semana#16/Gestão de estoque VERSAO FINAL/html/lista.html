@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Produtos</title>
+    <link rel="stylesheet" href="../css/lista.css">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <h2>Menu</h2>
+            <ul>
+                <li><a href="cadpro.html">Cadastrar Produtos</a></li>
+                <li><a href="lista.html">Listar Produtos</a></li>
+                <li><a href="excluir.html">Excluir Produtos</a></li>
+                <li><a href="alterar.html">Alterar Produtos</a></li>
+                <li><a href="estoque.html">Controle de Estoque</a></li>
+            </ul>
+        </div>
+        
+        <div class="content">
+            <h1>Lista de Produtos</h1>
+            <table id="productTable">
+                <thead>
+                    <tr>
+                        <th>Nome do Produto</th>
+                        <th>Preço do Produto</th>
+                        <th>Quantidade</th>
+                    </tr>
+                </thead>
+                <tbody id="productList"></tbody>
+            </table>
+        </div>
+        <script>
+            window.onload = function() {
+                const productList = document.getElementById('productList');
+                const products = JSON.parse(localStorage.getItem('products')) || [];
+
+                products.forEach(function(product) {
+                    const tr = document.createElement('tr');
+                    tr.innerHTML = `
+                        <td>${product.name}</td>
+                        <td>R$ ${product.price.toFixed(2)}</td>
+                        <td>${product.quantity}</td>
+                    `;
+                    productList.appendChild(tr);
+                });
+            }
+        </script>
+    </div>
+</body>
+</html>
+

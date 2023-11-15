@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/estoque.css">
+    <title>Controle de Estoque</title>
+
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <h2>Menu</h2>
+            <ul>
+                <li><a href="cadpro.html">Cadastrar Produtos</a></li>
+                <li><a href="lista.html">Listar Produtos</a></li>
+                <li><a href="excluir.html">Excluir Produtos</a></li>
+                <li><a href="alterar.html">Alterar Produtos</a></li>
+                <li><a href="estoque.html">Controle de Estoque</a></li>
+            </ul>
+        </div>
+        
+        <div class="content">
+            <h1>Controle de Estoque</h1>
+            <table id="stockTable">
+                <thead>
+                    <tr>
+                        <th>Nome do Produto</th>
+                        <th>Quantidade em Estoque</th>
+                    </tr>
+                </thead>
+                <tbody id="stockList">
+                    <!-- Lista de estoque será exibida aqui -->
+                </tbody>
+            </table>
+        </div>
+        <script>
+            function displayStockList() {
+                const products = JSON.parse(localStorage.getItem('products')) || [];
+                const stockList = document.getElementById('stockList');
+
+                // Limpa a lista antes de atualizar
+                stockList.innerHTML = '';
+
+                // Adiciona cada produto ao controle de estoque
+                products.forEach(product => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${product.name}</td>
+                        <td>${product.quantity}</td>
+                    `;
+                    stockList.appendChild(row);
+                });
+            }
+
+            // Exibe a lista de estoque ao carregar a página
+            displayStockList();
+        </script>
+    </div>
+</body>
+</html>
