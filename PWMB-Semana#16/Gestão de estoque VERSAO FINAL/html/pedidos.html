@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/pedido.css">
+    <title>Finalizar Pedido</title>
+</head>
+<body>
+  <main>
+    <section class="order-details">
+      <h2>Resumo do Pedido</h2>
+      <ul class="cart">
+        <li>
+          <img src="../img/tn.jpeg" alt="Produto A">
+          <div class="product-info">
+            <h3>Nike Tn Plus Preto/Branco</h3>
+            <p>Quantidade: 3</p>
+            <p>Preço: R$ 3150,00</p>
+            <p>Tamanho 40/39/38</p>
+          </div>
+        </li>
+
+      </ul>
+      <section class="customer-details">
+        <h2>Detalhes do Cliente</h2>
+        <form>
+          <label for="name">Nome:</label>
+          <input type="text" id="name" name="name" required>
+
+          <label for="email">E-mail:</label>
+          <input type="email" id="email" name="email" required>
+
+          <label for="endereco">Endereço de entrega:</label>
+          <input type="text" id="endereco" name="endereco" required>
+
+          <h2>Opções de Pagamento</h2>
+          <label for="payment-method">Método de Pagamento:</label>
+          <select id="payment-method" name="payment-method" required>
+            <option value="credit-card">Cartão de Crédito</option>
+            <option value="paypal">PayPal</option>
+            <option value="Cartão de Debito">Cartão de Debito</option>
+            <option value="PIX">PIX</option>
+          </select>
+          <button type="submit" id="finalize-btn">Finalizar Pedido</button>
+          <p id="payment-success-message" class="hidden">Pagamento Finalizado!</p>          
+        </form>
+      </section>
+    </section>
+  </main>
+
+</body>
+</html>
